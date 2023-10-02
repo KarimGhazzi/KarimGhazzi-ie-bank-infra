@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "KarimGhazzi-ie-bank-fe",
+			"path": "../KarimGhazzi-ie-bank-fe"
+		},
+		{
+			"name": "KarimGhazzi-ie-bank-be",
+			"path": "../KarimGhazzi-ie-bank-be"
+		}
+	],
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			
+
+		]
+	}
+}
