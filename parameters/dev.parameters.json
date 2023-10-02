@@ -6,7 +6,7 @@
             "value": "nonprod"
         },
         "postgreSQLServerName": {
-            "value": "karimg-dbsrv-dev"
+            "value": "karddimg-dbsrv-dev"
         },
         "postgreSQLDatabaseName": {
             "value": "karimg-db-dev"
