@@ -22,6 +22,12 @@
         },
         "location": {
             "value": "Germany West Central"
-        }
+        },
+        "azureMonitorName": {
+            "value": "karimg-am-dev"
+          },
+          "appInsightsName": {
+            "value": "karimg-ai-dev"
+          }
     }
 }

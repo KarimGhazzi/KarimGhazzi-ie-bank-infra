@@ -41,6 +41,10 @@ param appServiceAPIDBHostDBUSER string
 param appServiceAPIDBHostFLASK_APP string
 @sys.description('The value for the environment variable FLASK_DEBUG')
 param appServiceAPIDBHostFLASK_DEBUG string
+@sys.description('The name of the Azure Monitor workspace')
+param azureMonitorName string
+@sys.description('The name of the Application Insights')
+param appInsightsName string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -107,3 +111,18 @@ module appService 'modules/app-service.bicep' = {
 }
 
 output appServiceAppHostName string = appService.outputs.appServiceAppHostName
+//For monitoring purposes
+resource azureMonitor 'Microsoft.OperationalInsights/workspaces@2020-08-01' = {
+  name: azureMonitorName
+  location: location
+}
+
+resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
+  name: appInsightsName
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    WorkspaceResourceId: resourceId('Microsoft.OperationalInsights/workspaces', azureMonitorName)
+  }
+}
