@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "environmentType": {
+            "value": "prod"
+        },
+        "postgreSQLServerName": {
+            "value": "karimg-dbsrv-prod"
+        },
+        "postgreSQLDatabaseName": {
+            "value": "karimg-db-prod"
+        },
+        "appServicePlanName": {
+            "value": "karimg-asp-prod"
+        },
+        "appServiceAPIAppName": {
+            "value": "karimg-be-prod"
+        },
+        "appServiceAppName": {
+            "value": "karimg-fe-prod"
+        },
+        "location": {
+            "value": "Germany West Central"
+        },
+        "azureMonitorName": {
+            "value": "karimg-am-prod"
+          },
+          "appInsightsName": {
+            "value": "karimg-ai-prod"
+          }
+    }
+}
