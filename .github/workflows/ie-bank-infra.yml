@@ -3,7 +3,7 @@ name: ie-bank-infra
 on: 
   push:
     branches:
-      - testing
+      - Testing
   pull_request:
     branches:
       - main
