@@ -7,23 +7,23 @@ param environmentType string = 'nonprod'
 @sys.description('The PostgreSQL Server name')
 @minLength(3)
 @maxLength(24)
-param postgreSQLServerName string = 'ie-bank-db-server-dev'
+param postgreSQLServerName string
 @sys.description('The PostgreSQL Database name')
 @minLength(3)
 @maxLength(24)
-param postgreSQLDatabaseName string = 'ie-bank-db'
+param postgreSQLDatabaseName string 
 @sys.description('The App Service Plan name')
 @minLength(3)
 @maxLength(24)
-param appServicePlanName string = 'ie-bank-app-sp-dev'
+param appServicePlanName string 
 @sys.description('The Web App name (frontend)')
 @minLength(3)
 @maxLength(24)
-param appServiceAppName string = 'ie-bank-dev'
+param appServiceAppName string  
 @sys.description('The API App name (backend)')
 @minLength(3)
 @maxLength(24)
-param appServiceAPIAppName string = 'ie-bank-api-dev'
+param appServiceAPIAppName string 
 @sys.description('The Azure location where the resources will be deployed')
 param location string = resourceGroup().location
 @sys.description('The value for the environment variable ENV')
@@ -45,6 +45,7 @@ param appServiceAPIDBHostFLASK_DEBUG string
 param azureMonitorName string
 @sys.description('The name of the Application Insights')
 param appInsightsName string
+param aiapiname string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
@@ -90,7 +91,7 @@ resource postgresSQLDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/database
 }
 
 module appService 'modules/app-service.bicep' = {
-  name: 'appService'
+  name: appServicePlanName
   params: {
     location: location
     environmentType: environmentType
@@ -128,10 +129,10 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 }
 
 resource appInsightsAPI 'Microsoft.Insights/components@2020-02-02' = {
-  name: '${appInsightsName}-api'
+  name: aiapiname
   location: location
   kind: 'web'
-  
+
   properties: {
     Application_Type: 'web'
     WorkspaceResourceId: resourceId('Microsoft.OperationalInsights/workspaces', azureMonitorName)

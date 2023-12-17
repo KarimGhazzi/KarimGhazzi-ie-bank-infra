@@ -28,6 +28,9 @@
           },
           "appInsightsName": {
             "value": "karimg-ai-prod"
+          },
+          "aiapiname": {
+            "value": "karimg-aiapi-prod"
           }
     }
 }
